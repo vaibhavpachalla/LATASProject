@@ -1,0 +1,553 @@
+{
+	"variables": [],
+	"info": {
+		"name": "LATAS",
+		"_postman_id": "0ddd710f-3a49-5029-0f34-6038a58351c3",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Token",
+					"request": {
+						"url": "{{instance-url}}/oauth/token?grant_type=client_credentials&grant_type=DEVICE",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Basic SET_ME",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Data Layers",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Geofences",
+					"request": {
+						"url": "{{instance-url}}/api/geofences?topRightCoord=-89.23524856567383,36.34631005014225&bottomLeftCoord=-89.2030620574951,-36.331652626188216&page=1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Obstacles",
+					"request": {
+						"url": "{{instance-url}}/api/obstacles?topRightCoord=-89.23524856567383,36.34631005014225&bottomLeftCoord=-89.2030620574951,-36.331652626188216&page=1&size=100&type=airport",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Airspace Classes",
+					"request": {
+						"url": "{{instance-url}}/api/airspaces?topRightCoord=-78.78802,35.88012&bottomLeftCoord=-78.78808,35.88018&page=1&size=100&clazz=B,C",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Activity Logs",
+					"request": {
+						"url": "{{instance-url}}/api/activitylogs?page=1&size=100&activityType=violations",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Data Streaming",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Unmanned Data Stream Topic",
+					"request": {
+						"url": "{{instance-url}}/api/streaming/topic/unmanned",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"topRightCoord\": \"35.910123,-78.762299\", \"bottomLeftCoord\": \"35.852151,-78.820271\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Manned Data Stream Topic",
+					"request": {
+						"url": "{{instance-url}}/api/streaming/topic/manned",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"topRightCoord\": \"35.910123,-78.762299\", \"bottomLeftCoord\": \"35.852151,-78.820271\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Drone Publish Topic",
+					"request": {
+						"url": "{{instance-url}}/api/drones/{{drone-id}}/mqtt-topic",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Drones",
+			"description": "",
+			"item": [
+				{
+					"name": "Delete Drone",
+					"request": {
+						"url": "{{instance-url}}/api/drones/{{drone-id}}",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"droneName\": \"Magnus\",\n    \"deviceId\": \"42niner\",\n    \"tailNumber\": \"first\",\n    \"droneType\": \"Quadcoptor\",\n    \"droneModel\": \"WhirlyBird 2000\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Drone Types",
+					"request": {
+						"url": "{{instance-url}}/api/drones/models",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Drone",
+					"request": {
+						"url": "{{instance-url}}/api/drones/{{drone-id}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Register Drone",
+					"request": {
+						"url": "{{instance-url}}/api/drones",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"droneName\": \"Magnus\",\n    \"deviceId\": \"42niner\",\n    \"tailNumber\": \"first\",\n    \"droneType\": \"Quadcoptor\",\n    \"droneModel\": \"WhirlyBird 2000\",\n    \"serialNumber\": \"11324354657\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Check Drones Registration",
+					"request": {
+						"url": "{{instance-url}}/api/drones/{{drone-model}}/{{serial-number}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update Drone",
+					"request": {
+						"url": "{{instance-url}}/api/drones/{{drone-id}}",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"droneName\": \"Stewart\",\n    \"deviceId\": \"42niner\",\n    \"tailNumber\": \"first\",\n    \"droneType\": \"Quadcoptor\",\n    \"droneModel\": \"WhirlyBird 2000\",\n    \"serialNumber\": \"11324354557\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Drones",
+					"request": {
+						"url": "{{instance-url}}/api/drones?page=1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Flight Plans",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Flight Plans",
+					"request": {
+						"url": "{{instance-url}}/api/flightplans?page=1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Flight Plan",
+					"request": {
+						"url": "{{instance-url}}/api/flightplans",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"planName\": \"TestPlan001\",\n    \"minAltitude\": 10,\n    \"maxAltitude\": 370,\n    \"droneId\": {{drone-id}},\n    \"startDate\": \"2016-08-02T13:00:00.000Z\",\n    \"endDate\": \"2016-08-02T15:30:00.000Z\",\n    \"flightCoordinates\": \"[\\\"-79.021857976913,35.836586952209\\\", \\\"-79.009498357772,35.861306190491\\\", \\\"-79.024604558944,35.866799354553\\\", \\\"-79.037650823592,35.835213661194\\\", \\\"-79.021857976913,35.836586952209\\\"]\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Instances",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Instance",
+					"request": {
+						"url": "http://geographies.flylatas.com/instance?lat={{user-lat}}&lon={{user-lon}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": "Given a users location in the world (latitude/longitude) return the relevant LATAS instance."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"description": "",
+			"item": [
+				{
+					"name": "Get User",
+					"request": {
+						"url": "{{instance-url}}/api/users/{{user-id}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"url": "{{instance-url}}/api/users?page=1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/son",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
